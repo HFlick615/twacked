@@ -2,22 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWACKED Online</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>TWACKED - The Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="p1-turn">
 
-    <div class="game-container">
-        <h1>TWACKED</h1>
-        <p> 2 Players. Take Turns. Find the matches. Avoid the Clown. If you get Twacked, take a shot!</p>
-        
-        <div id="game-board"></div>
+    <h1 id="status-text" class="turn-indicator">PLAYER 1: FIND A MATCH!</h1>
 
-        <button onclick="resetGame()">Restart Game</button>
-    </div>
+    <div id="game-board"></div>
+
+    <button onclick="location.reload()">RESTART GAME</button>
 
     <script src="script.js"></script>
 </body>
 </html>
-

@@ -6,8 +6,8 @@ const regularCards = [
     { name: 'match_11', img: '11.webp' },
     { name: 'match_12', img: '12.webp' },
     { name: 'match_18', img: '18.webp' },
-    { name: 'match_oldclown', img: 'clown.webp' }, 
-    { name: 'match_alt8', img: '8.webp' } // Duplicate of 8 to fill the 7th slot. Replace if you have a 7th image!
+    { name: 'match_22', img: '22' }, 
+    { name: 'match_1', img: '1.webp' } // Duplicate of 8 to fill the 7th slot. Replace if you have a 7th image!
 ];
 
 // Variables
@@ -41,8 +41,8 @@ function initGame() {
     gameGrid = [
         ...regularCards, 
         ...regularCards, 
-        { name: 'danger_clown', img: '22.png' }, 
-        { name: 'danger_clown', img: '22.png' }
+        { name: '22', img: '22.webp' }, 
+        { name: '22', img: '22.webp' }
     ];
 
     shuffle(gameGrid);
@@ -85,7 +85,7 @@ function flipCard() {
 
     // --- THE BULLETPROOF CLOWN LOGIC ---
     // If the card is EITHER of the two "22.png" danger clowns, game over!
-    if (this.dataset.name === 'danger_clown') {
+    if (this.dataset.name === '22') {
         lockBoard = true; // Lock the board so they can't click anything else
         
         if(soundLaugh) soundLaugh.play().catch(e => console.log("Audio not loaded"));

@@ -1,0 +1,53 @@
+/* This sets the background to a dark, professional look */
+body {
+    background-color: #1a1a1a;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* This creates the 4x4 Grid for the cards */
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 10px; /* Space between cards */
+    max-width: 530px; /* Perfect width for a phone screen */
+    margin-top: 20px;
+}
+
+/* This is the base look of your cards */
+.card {
+    aspect-ratio: 2.5 / 3.5; /* Keeps the card shape we discussed */
+    background-color: #333;
+    border: 2px solid #ffcc00; /* A gold border for a "premium" feel */
+    border-radius: 10px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+}
+
+/* This hides the character image until the card is "flipped" */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.card.flipped img {
+    display: block;
+}
+
+/* This makes the button look nice */
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #ffcc00;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}

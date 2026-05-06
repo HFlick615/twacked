@@ -33,7 +33,7 @@ function initGame() {
         ...cardsArray, ...cardsArray, 
     
         { name: 'clown', img: '22.webp' },
-        { name: 'safe', img: '18.webp' }
+        
     ];
 
     shuffle(gameGrid);

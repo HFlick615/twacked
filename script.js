@@ -3,7 +3,7 @@ const cardsArray = [
     { name: '9', img: '9.webp' },
     { name: '11', img: '11.webp' },
     { name: '12', img: '12.webp' },
-    { name: '22', img: '22.png' },
+    { name: '22', img: '22.webp' },
     { name: '18', img: '18.webp' }
 ];
 

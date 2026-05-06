@@ -1,92 +1,53 @@
-/* 1. Page Layout */
+* This sets the background to a dark, professional look */
 body {
-    background-color: #1a1a1a; /* Dark background */
+    background-color: #1a1a1a;
     color: white;
     font-family: 'Arial', sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    margin: 0;
 }
 
-h1 {
-    margin-bottom: 10px;
-    color: #ffcc00; /* Matching the gold/neon theme */
-}
-
-/* 2. The Game Board (The Boss) */
+/* This creates the 4x4 Grid for the cards */
 #game-board {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Exactly 4 columns */
-    gap: 12px;
-    width: 95%;
-    max-width: 500px; /* Keeps it perfect for phone screens */
-    margin: 20px auto;
+    grid-template-columns: repeat(4, 1fr); /* 4 columns */
+    gap: 10px; /* Space between cards */
+    max-width: 400px; /* Perfect width for a phone screen */
+    margin-top: 20px;
 }
 
-/* 3. The Individual Cards */
+/* This is the base look of your cards */
 .card {
-    width: 100%; /* Keeps cards inside the grid squares */
-    aspect-ratio: 2.5 / 3.5; /* Standard card shape */
-   
-    /* Using your new card back */
-    background-image: url('card back.webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-   
-    border: 2px solid #ffcc00;
+    aspect-ratio: 2.5 / 3.5; /* Keeps the card shape we discussed */
+    background-color: #333;
+    border: 2px solid #ffcc00; /* A gold border for a "premium" feel */
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
     position: relative;
-   
-    /* Neon Glow & Smooth Interaction */
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Lift card slightly on hover */
-.card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
-}
-
-/* 4. The Card Face (The Image) */
+/* This hides the character image until the card is "flipped" */
 .card img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: none; /* Hidden by default */
-}
-
-/* 5. The Flipped State */
-.card.flipped {
-    background-image: none; /* Remove card back */
-    background-color: white; /* Makes character art pop */
-    transform: rotateY(0deg); /* Prep for potential flip animation */
+    display: none;
 }
 
 .card.flipped img {
-    display: block; /* Show character art */
+    display: block;
 }
 
-/* 6. The Button */
+/* This makes the button look nice */
 button {
     margin-top: 30px;
     padding: 15px 30px;
     background-color: #ffcc00;
-    color: #1a1a1a;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     font-weight: bold;
-    font-size: 16px;
     cursor: pointer;
-    box-shadow: 0 4px 0 #b38f00;
-}
-
-button:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #b38f00;
 }

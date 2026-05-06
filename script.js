@@ -73,7 +73,7 @@ function flipCard() {
     this.classList.add('flipped');
 
     // --- CLOWN LOGIC ---
-    if (this.dataset.name === 'clown') {
+    if (this.dataset.name === '22') {
         lockBoard = true;
         soundLaugh.play().catch(e => console.log("Audio not loaded yet"));
         

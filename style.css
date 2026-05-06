@@ -31,7 +31,7 @@ h1 {
     aspect-ratio: 2.5 / 3.5; /* Standard card shape */
    
     /* Using your new card back */
-    background-image: url('cardback.webp');
+    background-image: url('card back.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

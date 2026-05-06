@@ -9,19 +9,22 @@
 </head>
 <body class="p1-turn">
 
+    <audio id="sound-click" src="click.mp3" preload="auto"></audio>
+    <audio id="sound-laugh" src="laugh.mp3" preload="auto"></audio>
+
     <div id="overlay" class="overlay">
         <div class="modal">
-            <h1 class="logo-text">TWACKED</h1>
-            <div class="rules-container">
+            <h1 id="modal-title" class="logo-text">TWACKED</h1>
+            <div id="modal-content" class="rules-container">
                 <h2>HOW TO PLAY</h2>
                 <ul>
                     <li><span class="num">1</span> 2-Player competitive mode.</li>
-                    <li><span class="num">2</span> Pick until you find a <strong>MATCH</strong>.</li>
-                    <li><span class="num">3</span> A match switches the <strong>TURN</strong>.</li>
-                    <li><span class="num">4</span> Avoid the <strong>CLOWN</strong> or take a <strong>SHOT</strong>.</li>
+                    <li><span class="num">2</span> Pick until you find a&nbsp;<strong>MATCH</strong>.</li>
+                    <li><span class="num">3</span> A match switches the&nbsp;<strong>TURN</strong>.</li>
+                    <li><span class="num">4</span> Avoid the&nbsp;<strong>CLOWN</strong>&nbsp;or take a&nbsp;<strong>SHOT</strong>.</li>
                 </ul>
             </div>
-            <button class="start-btn" onclick="startGame()">START SESSION</button>
+            <button id="modal-btn" class="start-btn" onclick="startGame()">START SESSION</button>
         </div>
     </div>
 
@@ -32,17 +35,9 @@
     <main id="game-board"></main>
 
     <footer>
-        <button class="control-btn" onclick="location.reload()">RESET BOARD</button>
+        <button class="control-btn" onclick="triggerReset()">RESET BOARD</button>
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        function startGame() {
-            document.getElementById('overlay').classList.add('fade-out');
-            setTimeout(() => {
-                document.getElementById('overlay').style.display = 'none';
-            }, 500);
-        }
-    </script>
 </body>
 </html>

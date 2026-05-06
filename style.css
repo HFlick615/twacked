@@ -40,7 +40,7 @@ body.p2-turn .turn-indicator {
 .card {
     width: 100%;
     aspect-ratio: 2.5 / 3.5;
-    background-image: url('cardback.webp');
+    background-image: url('card back.webp');
     background-size: cover;
     background-position: center;
     border: 2px solid #ffcc00;

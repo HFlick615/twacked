@@ -33,7 +33,7 @@ function initGame() {
     gameGrid = [
         ...cardsArray, ...cardsArray, 
     
-        { name: 'clown', img: '22.webp' },
+        { name: '22', img: '22.webp' },
         
     ];
 

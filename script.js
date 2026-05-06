@@ -2,6 +2,7 @@
 // Note: I repurposed 'clown.webp' as a normal matching pair since '22.png' is the real threat now!
 const regularCards = [
     { name: 'match_8', img: '8.webp' },
+    { name: 'match_5', img: '5.webp' },
     { name: 'match_9', img: '9.webp' },
     { name: 'match_11', img: '11.webp' },
     { name: 'match_12', img: '12.webp' },

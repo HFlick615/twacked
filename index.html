@@ -3,17 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>TWACKED - The Game</title>
+    <title>TWACKED | Mobile Party Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Montserrat:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="p1-turn">
 
-    <h1 id="status-text" class="turn-indicator">PLAYER 1: FIND A MATCH!</h1>
+    <div id="overlay" class="overlay">
+        <div class="modal">
+            <h1 class="logo-text">TWACKED</h1>
+            <div class="rules-container">
+                <h2>HOW TO PLAY</h2>
+                <ul>
+                    <li><span class="num">1</span> 2-Player competitive mode.</li>
+                    <li><span class="num">2</span> Pick until you find a <strong>MATCH</strong>.</li>
+                    <li><span class="num">3</span> A match switches the <strong>TURN</strong>.</li>
+                    <li><span class="num">4</span> Avoid the <strong>CLOWN</strong> or take a <strong>SHOT</strong>.</li>
+                </ul>
+            </div>
+            <button class="start-btn" onclick="startGame()">START SESSION</button>
+        </div>
+    </div>
 
-    <div id="game-board"></div>
+    <header>
+        <h1 id="status-text" class="turn-indicator">PLAYER 1: YOUR TURN</h1>
+    </header>
 
-    <button onclick="location.reload()">RESTART GAME</button>
+    <main id="game-board"></main>
+
+    <footer>
+        <button class="control-btn" onclick="location.reload()">RESET BOARD</button>
+    </footer>
 
     <script src="script.js"></script>
+    <script>
+        function startGame() {
+            document.getElementById('overlay').classList.add('fade-out');
+            setTimeout(() => {
+                document.getElementById('overlay').style.display = 'none';
+            }, 500);
+        }
+    </script>
 </body>
 </html>

@@ -5,7 +5,8 @@ const cardsArray = [
     { name: '12', img: '12.webp' },
     { name: '22', img: '22.webp' },
     { name: '18', img: '18.webp' },
-    { name: '1', img: '1.webp' }
+    { name: '1', img: '1.webp' },
+    { name: '15', img: '15.webp' }
 ];
 
 let gameGrid = [];

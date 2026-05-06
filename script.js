@@ -1,4 +1,4 @@
-function checkForMatch() {
+unction checkForMatch() {
     let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
     if (isMatch) {
@@ -30,3 +30,5 @@ function switchPlayer() {
     title.innerText = "PLAYER " + currentPlayer + " IS IN THE HOT SEAT!";
     title.style.color = (currentPlayer === 1) ? "#ffcc00" : "#00ffcc";
 }
+
+ 

@@ -32,7 +32,7 @@ function initGame() {
     // Create the 15 card deck
     gameGrid = [
         ...cardsArray, ...cardsArray, 
-    
+    { name: '22', img: '22.webp' },
         { name: '22', img: '22.webp' },
         
     ];

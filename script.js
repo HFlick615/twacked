@@ -1,14 +1,16 @@
-const cardsArray = [
-    { name: '8', img: '8.webp' },
-    { name: '9', img: '9.webp' },
-    { name: '11', img: '11.webp' },
-    { name: '12', img: '12.webp' },
-    { name: '22', img: '22.webp' },
-    { name: '18', img: '18.webp' },
-    { name: '1', img: '1.webp' },
-    { name: '15', img: '15.webp' }
+// 1. We define the 7 normal matching pairs (14 cards total)
+// Note: I repurposed 'clown.webp' as a normal matching pair since '22.png' is the real threat now!
+const regularCards = [
+    { name: 'match_8', img: '8.webp' },
+    { name: 'match_9', img: '9.webp' },
+    { name: 'match_11', img: '11.webp' },
+    { name: 'match_12', img: '12.webp' },
+    { name: 'match_18', img: '18.webp' },
+    { name: 'match_oldclown', img: 'clown.webp' }, 
+    { name: 'match_alt8', img: '8.webp' } // Duplicate of 8 to fill the 7th slot. Replace if you have a 7th image!
 ];
 
+// Variables
 let gameGrid = [];
 const board = document.getElementById('game-board');
 const statusText = document.getElementById('status-text');
@@ -24,17 +26,23 @@ let matchesFound = 0;
 
 // Initializes the game (Called on start and reset)
 function initGame() {
-    board.innerHTML = ''; // Clears the board completely
+    board.innerHTML = ''; 
     matchesFound = 0;
     currentPlayer = 1;
     updateUIForPlayer(1);
     
-    // Create the 15 card deck
+    // THE BUG FIX: We must explicitly unlock the board when resetting!
+    lockBoard = false;
+    hasFlippedCard = false;
+    firstCard = null;
+    secondCard = null;
+    
+    // 2. Build the 16-card deck: 7 pairs (14 cards) + 2 Clowns (22.png)
     gameGrid = [
-        ...cardsArray, ...cardsArray, 
-    { name: '22', img: '22.webp' },
-        { name: '22', img: '22.webp' },
-        
+        ...regularCards, 
+        ...regularCards, 
+        { name: 'danger_clown', img: '22.png' }, 
+        { name: 'danger_clown', img: '22.png' }
     ];
 
     shuffle(gameGrid);
@@ -55,6 +63,7 @@ function initGame() {
     });
 }
 
+// Fisher-Yates Shuffle
 function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -66,24 +75,29 @@ function flipCard() {
     if (lockBoard) return;
     if (this === firstCard) return;
 
-    // Play click sound (if file exists)
-    soundClick.currentTime = 0;
-    soundClick.play().catch(e => console.log("Audio not loaded yet"));
+    // Play click sound (ignore errors if audio file is missing)
+    if(soundClick) {
+        soundClick.currentTime = 0;
+        soundClick.play().catch(e => console.log("Audio not loaded"));
+    }
 
     this.classList.add('flipped');
 
-    // --- CLOWN LOGIC ---
-    if (this.dataset.name === '22') {
-        lockBoard = true;
-        soundLaugh.play().catch(e => console.log("Audio not loaded yet"));
+    // --- THE BULLETPROOF CLOWN LOGIC ---
+    // If the card is EITHER of the two "22.png" danger clowns, game over!
+    if (this.dataset.name === 'danger_clown') {
+        lockBoard = true; // Lock the board so they can't click anything else
         
-        // Wait 1 second so they can see the clown, then show Game Over screen
+        if(soundLaugh) soundLaugh.play().catch(e => console.log("Audio not loaded"));
+        
+        // Wait 1.2 seconds so they can see the clown, then show Game Over screen
         setTimeout(() => {
-            showEndScreen("TWACKED!", `Player ${currentPlayer} takes a shot!`, "var(--danger)");
+            showEndScreen("TWACKED!", `Player ${currentPlayer} hit the Clown and takes a shot!`, "var(--danger)");
         }, 1200);
         return;
     }
 
+    // Normal matching logic
     if (!hasFlippedCard) {
         hasFlippedCard = true;
         firstCard = this;
@@ -100,7 +114,8 @@ function checkForMatch() {
     if (isMatch) {
         matchesFound++;
         disableCards();
-        if (matchesFound === 6) {
+        // If they find all 7 pairs, they win!
+        if (matchesFound === 7) {
             setTimeout(() => {
                 showEndScreen("SURVIVED!", "The board is clear. Everyone wins!", "var(--p2-color)");
             }, 800);
@@ -148,13 +163,14 @@ function updateUIForPlayer(playerNum) {
     }
 }
 
-// UI Controls for Modal
+// --- UI Controls for Modal ---
 function startGame() {
     overlay.classList.add('fade-out');
     setTimeout(() => {
         overlay.style.display = 'none';
     }, 500);
-    // If it's the first time playing, init the game
+    
+    // Only init if the board is empty (first time playing)
     if (board.innerHTML === '') {
         initGame();
     }
@@ -169,10 +185,10 @@ function showEndScreen(titleText, subtitleText, titleColor) {
     overlay.style.display = 'flex';
     setTimeout(() => { overlay.classList.remove('fade-out'); }, 50);
     
-    // Reset the game board silently in the background
+    // Reset the game board silently behind the menu overlay so it's ready when they click Play Again
     initGame();
 }
 
 function triggerReset() {
-    showEndScreen("RESET", "The board has been shuffled.", "white");
+    showEndScreen("RESETTING", "Shuffling the deck...", "white");
 }

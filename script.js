@@ -7,7 +7,7 @@ const regularCards = [
     { name: 'match_11', img: '11.webp' },
     { name: 'match_12', img: '12.webp' },
     { name: 'match_18', img: '18.webp' },
-    { name: 'match_22', img: '22' }, 
+    { name: 'match_22', img: '22.webp' }, 
     { name: 'match_1', img: '1.webp' } // Duplicate of 8 to fill the 7th slot. Replace if you have a 7th image!
 ];
 

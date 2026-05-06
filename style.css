@@ -1,35 +1,17 @@
-/* This sets the background to a dark, professional look */
-body {
-    background-color: #1a1a1a;
-    color: white;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-}
-
-/* This creates the 4x4 Grid for the cards */
-#game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 10px; /* Space between cards */
-    max-width: 530px; /* Perfect width for a phone screen */
-    margin-top: 20px;
-}
-
-/* This is the base look of your cards */
 .card {
-    aspect-ratio: 2.5 / 3.5; /* Keeps the card shape we discussed */
-    background-color: #333;
-    border: 2px solid #ffcc00; /* A gold border for a "premium" feel */
+    aspect-ratio: 2.5 / 3.5;
+    background-image: url('card back.webp');
+    background-size: 100% 100%; /* Forces the back to fit exactly edge-to-edge */
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #ffcc00;
     border-radius: 10px;
     cursor: pointer;
     overflow: hidden;
-    position: relative;
+    transition: transform 0.3s ease; /* Makes the click feel snappy */
 }
 
-/* This hides the character image until the card is "flipped" */
+/* This makes the character art fill the exact same space as the back */
 .card img {
     width: 100%;
     height: 100%;
@@ -41,13 +23,10 @@ body {
     display: block;
 }
 
-/* This makes the button look nice */
-button {
-    margin-top: 30px;
-    padding: 15px 30px;
-    background-color: #ffcc00;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    cursor: pointer;
+/* Removes the back design once flipped so it doesn't bleed through */
+.card.flipped {
+    background-image: none;
+    background-color: #000;
 }
+
+ 
